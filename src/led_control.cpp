@@ -1,18 +1,25 @@
-#include "led_control.h"
-#include "config.h"
 #include <Arduino.h>
+#include "config.h"
+#include "led_control.h"
+
+static void ledBlink(uint8_t times) {
+    for (uint8_t i = 0; i < times; i++) {
+        digitalWrite(LED_PIN, HIGH);
+        delay(LED_BLINK_DELAY);
+        digitalWrite(LED_PIN, LOW);
+        delay(LED_BLINK_DELAY);
+    }
+}
 
 void ledInit() {
-    pinMode(LED_GREEN_PIN, OUTPUT);
-    pinMode(LED_RED_PIN, OUTPUT);
+    pinMode(LED_PIN, OUTPUT);
+    digitalWrite(LED_PIN, LOW);
 }
 
 void ledAccessGranted() {
-    digitalWrite(LED_GREEN, HIGH);
-    digitalWrite(LED_RED, LOW);
+    ledBlink(1);
 }
 
 void ledAccessDenied() {
-    digitalWrite(LED_GREEN, LOW);
-    digitalWrite(LED_RED, HIGH);
+    ledBlink(2);
 }

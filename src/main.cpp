@@ -1,3 +1,6 @@
+#include <Arduino.h>
+
+#include "config.h"
 #include "wifi_manager.h"
 #include "device_registration.h"
 #include "card_reader.h"
@@ -16,13 +19,13 @@ void setup() {
     String code = Serial.readStringUntil('\n');
 
     if (!registerDevice(code)) {
-        Serial.println("Регистрация не удалась");
+        Serial.println("");
         while (true);
     }
 }
 
 void loop() {
-    wsLoop();   // 👈 ВАЖНО
+    wsLoop();
 
     String uid;
     if (readCard(uid)) {
