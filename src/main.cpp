@@ -15,9 +15,9 @@ void setup() {
     wsInit();
 
     Serial.println("Введите код регистрации:");
-    while (!Serial.available()) {}
-    String code = Serial.readStringUntil('\n');
-
+    while (!Serial.available()) {
+        String code = Serial.readStringUntil('\n');
+    }
     if (!registerDevice(code)) {
         Serial.println("");
         while (true);
