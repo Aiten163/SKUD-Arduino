@@ -2,24 +2,34 @@
 #include "config.h"
 #include "led_control.h"
 
-static void ledBlink(uint8_t times) {
-    for (uint8_t i = 0; i < times; i++) {
-        digitalWrite(LED_PIN, HIGH);
-        delay(LED_BLINK_DELAY);
-        digitalWrite(LED_PIN, LOW);
-        delay(LED_BLINK_DELAY);
-    }
-}
+#define LED_PIN 16
 
 void ledInit() {
     pinMode(LED_PIN, OUTPUT);
     digitalWrite(LED_PIN, LOW);
 }
 
+void ledOn() {
+    digitalWrite(LED_PIN, HIGH);
+}
+
+void ledOff() {
+    digitalWrite(LED_PIN, LOW);
+}
+
+void ledBlink(int times) {
+    for (int i = 0; i < times; i++) {
+        digitalWrite(LED_PIN, HIGH);
+        delay(300);
+        digitalWrite(LED_PIN, LOW);
+        delay(300);
+    }
+}
+
 void ledAccessGranted() {
-    ledBlink(1);
+    ledOn();
 }
 
 void ledAccessDenied() {
-    ledBlink(2);
+    ledBlink(3);
 }

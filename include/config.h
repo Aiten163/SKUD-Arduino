@@ -8,7 +8,7 @@
 #define SERVER_HOST   "192.168.0.173"
 #define SERVER_PORT   8080
 
-#define HTTP_REGISTER_URL "http://192.168.0.173/register"
+#define HTTP_REGISTER_URL "http://192.168.0.173/api/register"
 #define WS_PATH          "/ws"
 
 /************ Hardware ************/
@@ -23,7 +23,7 @@
 #define CONFIG_H
 
 /***** LED *****/
-#define LED_PIN 2
+
 #define LED_BLINK_DELAY 200
 
 #endif
